@@ -33,6 +33,7 @@ if(empty($result)) {
 						preco decimal(10,2),
 						descricao text,
 						categoria_id int,
+						imagem varchar(50),
 						usado boolean default 0
                           )";
                 $result = mysqli_query($conexao, $query);
