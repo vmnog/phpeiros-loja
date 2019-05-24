@@ -9,8 +9,8 @@ function listaProdutos($conexao){
     return $produtos;
 }
 
-function insereProduto($conexao, $nome, $preco, $descricao, $categoria_id, $usado,$image){
-    $query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado,imagem) VALUES ('{$nome}', '{$preco}', '{$descricao}', '{$categoria_id}', '{$usado}','{$image}')";
+function insereProduto($conexao, $nome, $preco, $descricao, $categoria_id, $usado){
+    $query = "INSERT INTO produtos (nome, preco, descricao, categoria_id, usado) VALUES ('{$nome}', '{$preco}', '{$descricao}', '{$categoria_id}', '{$usado}')";
     return mysqli_query($conexao,$query);
 }
 
@@ -25,8 +25,8 @@ function buscaProduto($conexao, $id){
     return mysqli_fetch_assoc($resultado);
 }
 
-function alteraProduto($conexao, $id, $nome, $preco, $descricao, $categoria_id, $usado,$image){
-    $query = "UPDATE produtos SET nome = '{$nome}', preco = '{$preco}', descricao = '{$descricao}', categoria_id = '{$categoria_id}' , usado = '{$usado}' , imagem = '{$image}' WHERE id = '{$id}'";
+function alteraProduto($conexao, $id, $nome, $preco, $descricao, $categoria_id, $usado){
+    $query = "UPDATE produtos SET nome = '{$nome}', preco = '{$preco}', descricao = '{$descricao}', categoria_id = '{$categoria_id}' , usado = '{$usado}' WHERE id = '{$id}'";
     return mysqli_query($conexao,$query);
 }
 

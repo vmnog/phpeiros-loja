@@ -10,14 +10,8 @@
 
 <h2>Formulário de produto</h2>
 <div class="container ">
-<form action="adiciona-produto.php" method="post" enctype="multipart/form-data">
+<form action="adiciona-produto.php" method="post">
     <table class="table">
-			<tr>
-				<td>Imagem</td>
-				<td>
-					<input required type="file" multiple name="imagem" value="Adicionar Imagens" />
-				</td>
-			</tr>	
         <tr>
             <td>Nome</td>
             <td>
