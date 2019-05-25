@@ -10,11 +10,14 @@ $descricao = $_POST["descricao"];
 $categoria_id = $_POST["categoria_id"];
 $id = $_POST["id"];
 
+$produto = buscaProduto($conexao, $id);
+
 if(array_key_exists('usado', $_POST)){
     $usado = 1;
 } else {
     $usado = 0;
 }
+
 
 
 $conexao = mysqli_connect('localhost', 'root', '', 'loja');
