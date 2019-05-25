@@ -15,7 +15,7 @@ $nome = $categoria['nome'];
 <div class="container ">
     <form action="altera-categoria.php" method="post">
         <input type="hidden" name="id" value="<?=$id?>">
-        <table class="table text-light">
+        <table class="table">
             <tr>
                 <td>ID</td>
                 <td><input  class="form-control" type="text" name="id"  value="<?=$categoria['id']?>"></td>
