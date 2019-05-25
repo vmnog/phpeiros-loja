@@ -16,7 +16,9 @@ $categoria_nome = $categoria['nome'];
 ?>
 
 <div class="card">
-	<img class="card-img-top" src="src/produtos/img/<?=$produto['imagem']?>" alt="Card image cap">
+    <div>
+        <img  class="imagem-produto" src="src/produtos/img/<?=$produto['imagem']?>" alt="Card image cap">
+    </div>	
     <div class="card-body">
             <h5 class="card-title"><?=$produto['nome'];?></h5>
         <p class="card-text"><?=$produto['descricao'];?></p>
