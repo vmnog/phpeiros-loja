@@ -1,11 +1,11 @@
-<?php include("src/includes/cabecalho.php"); ?>
+<?php include("cabecalho.php"); ?>
 
 
 <div>
     <h1 style="margin-bottom: 5%;">Bem vindo a minha loja!</h1>    
 </div>
 
-<h3 style="color: tomato; margin-bottom: 5%;"><?php include("src/bancos/conecta.php"); ?></h3>
+<h3 style="color: tomato; margin-bottom: 5%;"><?php include("conecta.php"); ?></h3>
 
 <div>
     <h2 style="margin-bottom: 25px;">Dicas pros Devs</h2>
@@ -17,4 +17,4 @@
 
 
 </div>
-<?php include("src/includes/rodape.php"); ?>
+<?php include("rodape.php"); ?>

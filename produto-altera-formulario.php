@@ -1,6 +1,8 @@
 <?php
-include("../src/includes/cabecalho.2.php");
-require_once("../src/bancos/global.php");
+include("cabecalho.php");
+include("conecta.php");
+include("banco-categoria.php");
+include("banco-produto.php");
 
 $id = $_GET['id'];
 $produto = buscaProduto($conexao, $id);
@@ -20,7 +22,7 @@ $usado = $produto['usado'] ? "checked = 'checked'" : "";
                 <td>
                     <div class="input-group mb-3">
                         <div class="custom-file">
-                            <input name="imagem" disabled type="text" class="custom-file-input" value="<?= $produto['imagem'] ?>">
+                            <input name="imagem" type="text" class="custom-file-input" value="<?= $produto['imagem'] ?>">
                             <label class="custom-file-label" id="fileInputLabel"><?= $produto['imagem'] ?></label>
                         </div>
                     </div>
@@ -71,4 +73,4 @@ $usado = $produto['usado'] ? "checked = 'checked'" : "";
         </table>
     </form>
 </div>
-<?php include("../src/includes/rodape.2.php"); ?>
+<?php include("rodape.php"); ?>

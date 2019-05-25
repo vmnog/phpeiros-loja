@@ -1,8 +1,8 @@
 <?php
-include ("../src/cabecalho.php");
-include ("../src/bancos/conecta.php");
-include ("src/bancos/banco-produto.php");
-include ("src/bancos/banco-categoria.php");
+include ("cabecalho.php");
+include ("conecta.php");
+include ("banco-produto.php");
+include ("banco-categoria.php");
 
 
 $id = $_POST["id"];
@@ -33,5 +33,5 @@ $categoria_nome = $categoria['nome'];
     </div>
 </div>
 
-<?php include ("../src/rodape.php"); ?>
+<?php include ("rodape.php"); ?>
 

@@ -1,6 +1,7 @@
 <?php
-    include ("../src/includes/cabecalho.2.php");
-	require_once("../src/bancos/global.php");
+    include ("cabecalho.php");
+    include ("conecta.php");
+    include ("banco-produto.php");
 
     $getRemovido = array_key_exists("removido", $_GET);
     $removido = $getRemovido == "true";
@@ -12,10 +13,6 @@
     <table class="table table-bordered table-striped ">
 <?php
     $produtos = listaProdutos($conexao);
-
-	if(count($produtos) === 0){
-		echo '<p style="color:red;">*Sem produtos para listar!</p>';
-	}
     foreach ($produtos as $produto):
 ?>
     <tr>
@@ -47,5 +44,5 @@
 ?>
     </table>
 <a href="produto-formulario.php"><button class="btn btn-primary float-left">+</button></a>
-<?php include ("../src/includes/rodape.2.php"); ?>
+<?php include ("rodape.php"); ?>
 

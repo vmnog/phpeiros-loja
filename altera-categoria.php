@@ -1,6 +1,7 @@
 <?php
-include ("../src/includes/cabecalho.2.php");
-require_once("../src/bancos/global.php");
+include ("cabecalho.php");
+include ("conecta.php");
+include ("banco-categoria.php");
 
 $id = $_POST["id"];
 $nome = $_POST["nome"];
@@ -20,4 +21,4 @@ if (alteraCategoria($conexao, $id, $nome)){ ?>
 <!--<a href="produto-formulario.php"><button type="button" class="btn btn-primary">Voltar</button></a>-->
 <a href="categoria-lista.php"><button type="button" class="btn btn-primary">Listar Categorias</button></a>
 
-<?php include ("../src/includes/rodape.2.php"); ?>
+<?php include ("rodape.php"); ?>

@@ -2,9 +2,9 @@
 <head>
     <title>Minha Loja</title>
     <meta charset="utf-8">
-    <link href="src/css/bootstrap.css" rel="stylesheet">
-    <link href="src/css/loja.css" rel="stylesheet">
-    <script src="src/js/produto.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/loja.css" rel="stylesheet">
+    <script src="js/produto.js"></script>
 </head>
 <body class="bg-light">
 
@@ -18,9 +18,9 @@
                 Produtos
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="admin/produto-formulario.php">Adicionar</a>
+                <a class="dropdown-item" href="produto-formulario.php">Adicionar</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="admin/produto-lista.php">Listar</a>
+                <a class="dropdown-item" href="produto-lista.php">Listar</a>
             </div>
         </div>
 
@@ -30,9 +30,9 @@
                 Categorias
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="admin/categoria-formulario.php">Adicionar</a>
+                <a class="dropdown-item" href="categoria-formulario.php">Adicionar</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="admin/categoria-lista.php">Listar</a>
+                <a class="dropdown-item" href="categoria-lista.php">Listar</a>
             </div>
         </div>
 

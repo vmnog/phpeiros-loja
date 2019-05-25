@@ -1,7 +1,8 @@
 <?php
-include ("src/cabecalho.php");
-require_once("src/bancos/global.php");
-
+include ("cabecalho.php");
+include ("conecta.php");
+include ("banco-produto.php");
+include ("banco-categoria.php");
 ?>
 
 <table class="table table-bordered table-striped">
@@ -12,7 +13,7 @@ require_once("src/bancos/global.php");
         <tr>
             <td class="align-middle"><?=$categoria['id'];?></td>
             <td class="align-middle"><?=$categoria['nome'];?></td>
-           <!-- <td class="text-center">
+            <td class="text-center">
                 <form action="categoria-altera-formulario.php?id=<?=$categoria['id'];?>" method="post">
                     <input type="hidden" name="id" value="<?=$categoria['id'];?>">
                     <button class="btn btn-warning">Alterar</button>
@@ -23,7 +24,7 @@ require_once("src/bancos/global.php");
                     <input type="hidden" name="id" value="<?=$categoria['id'];?>">
                     <button class="btn btn-danger">Remover</button>
                 </form>
-            </td>-->
+            </td>
         </tr>
     <?php
     endforeach;

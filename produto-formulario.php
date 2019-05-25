@@ -1,6 +1,7 @@
 <?php
-include("../src/includes/cabecalho.2.php");
-require_once("../src/bancos/global.php");
+include("cabecalho.php");
+include("conecta.php");
+include("banco-categoria.php");
 
 $categorias = listaCategorias($conexao);
 
@@ -62,4 +63,4 @@ $categorias = listaCategorias($conexao);
         </table>
     </form>
 </div>
-<?php include("../src/includes/rodape.2.php"); ?>
+<?php include("rodape.php"); ?>

@@ -1,6 +1,8 @@
 <?php
-include ("../src/includes/cabecalho.2.php");
-require_once("../src/bancos/global.php");
+include ("cabecalho.php");
+include ("conecta.php");
+include ("banco-produto.php");
+include ("banco-categoria.php");
 
 $nome = $_POST["nome"];
 $preco = $_POST["preco"];
@@ -10,7 +12,12 @@ $id = $_POST["id"];
 
 $produto = buscaProduto($conexao, $id);
 
-$usado = isset($_POST['usado']) ? 1 : 0;
+if(array_key_exists('usado', $_POST)){
+    $usado = 1;
+} else {
+    $usado = 0;
+}
+
 
 
 $conexao = mysqli_connect('localhost', 'root', '', 'loja');
@@ -28,4 +35,4 @@ if (alteraProduto($conexao, $id, $nome, $preco, $descricao, $categoria_id, $usad
 <a href="produto-formulario.php"><button type="button" class="btn btn-primary">Voltar</button></a>
 <a href="produto-lista.php"><button type="button" class="btn btn-primary">Listar Produtos</button></a>
 
-<?php include ("../src/includes/rodape.2.php"); ?>
+<?php include ("rodape.php"); ?>

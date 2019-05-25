@@ -1,24 +1,25 @@
 <?php
-    include ("../src/includes/cabecalho.2.php");
-	require_once("../src/bancos/global.php");
-	include ("../src/processa-imagem.php");
+    include ("cabecalho.php");
+    include ("conecta.php");
+    include ("banco-produto.php");
+    include ("banco-categoria.php");
+	include ("processa-imagem.php");
 
     $nome = $_POST["nome"];
     $preco = $_POST["preco"];
     $descricao = $_POST["descricao"];
     $categoria_id = $_POST["categoria_id"] ?? '0';
 	
-	$usado = isset($_POST['usado']) ? 1 : 0;
+    if(array_key_exists('usado', $_POST)){
+        $usado = 1;
+    } else {
+        $usado = 0;
+    }
 	
 	if(isset($_FILES['imagem'])){
 		$img = processaImagem($_FILES['imagem']);
-		echo '<img src="../'.$img['src'].'" width="300px" height="300px" /><br />';	
+		echo '<img src="'.$img['src'].'" width="300px" height="300px" /><br />';	
 	}
-	
-	if($img['ok'] === false)
-		echo '<p><b>Atenção!</b> A imagem que você enviou não foi processada corramente.<br />
-		Uma imagem temporária está visivel atualmente, clique no link para corrir a imagem
-		<a href="reparar-imagem.php" target="_blank" title="Clique para corrigir a imagem">Corrigir Imagem</a></p>';
 	
     $conexao = mysqli_connect('localhost', 'root', '', 'loja');
 
@@ -35,4 +36,4 @@
     <a href="produto-formulario.php"><button type="button" class="btn btn-primary">Voltar</button></a>
     <a href="produto-lista.php"><button type="button" class="btn btn-primary">Listar Produtos</button></a>
 
-<?php include ("../src/includes/rodape.2.php"); ?>
+<?php include ("rodape.php"); ?>
