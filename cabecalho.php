@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/loja.css" rel="stylesheet">
+    <script src="js/produto.js"></script>
 </head>
 <body class="bg-light">
 

@@ -17,7 +17,7 @@ if ($conexao->connect_error) {
 if (!mysqli_select_db($conexao,$dbName)){
     $sql = "CREATE DATABASE ".$dbName;
     if ($conexao->query($sql) === TRUE) {
-        echo "Banco de dados criado com sucesso!";
+        echo "LOJA, ";
     }else {
         echo "Error creating database: " . $conexao->error;
     }
@@ -26,7 +26,7 @@ if (!mysqli_select_db($conexao,$dbName)){
 $query = "SELECT ID FROM Produtos";
 $result = mysqli_query($conexao, $query);
 
-if(empty($result)) {
+if(empty($result) & mysqli_select_db($conexao,$dbName)) {
                 $query = "CREATE TABLE Produtos (
 						id int AUTO_INCREMENT PRIMARY KEY,
 						nome varchar(255),
@@ -37,19 +37,19 @@ if(empty($result)) {
 						usado boolean default 0
                           )";
                 $result = mysqli_query($conexao, $query);
-				 echo "tabela criada com sucesso!";
+				 echo " PRODUTOS\n";
 }
 
 $query = "SELECT ID FROM categorias";
 $result = mysqli_query($conexao, $query);
 
-if(empty($result)) {
+if(empty($result) & mysqli_select_db($conexao,$dbName)) {
                 $query = "CREATE TABLE categorias (
 							id int AUTO_INCREMENT PRIMARY KEY,
 							nome varchar(255) NOT NULL
                           )";
 						   $result = mysqli_query($conexao, $query);
-				 echo "Tabela criada com sucesso!";
+				 echo " e CATEGORIAS criados com sucesso!\n";
 }
 
 
