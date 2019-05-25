@@ -1,18 +1,19 @@
 <?php
-include ("src/cabecalho.php");
-require_once("src/bancos/global.php");
+include ("../src/includes/cabecalho.2.php");
+require_once("../src/bancos/global.php");
 
 ?>
 
 <table class="table table-bordered table-striped">
     <?php
     $categorias = listaCategorias($conexao);
+	
     foreach ($categorias as $categoria):
         ?>
         <tr>
             <td class="align-middle"><?=$categoria['id'];?></td>
             <td class="align-middle"><?=$categoria['nome'];?></td>
-           <!-- <td class="text-center">
+            <td class="text-center">
                 <form action="categoria-altera-formulario.php?id=<?=$categoria['id'];?>" method="post">
                     <input type="hidden" name="id" value="<?=$categoria['id'];?>">
                     <button class="btn btn-warning">Alterar</button>
@@ -23,12 +24,12 @@ require_once("src/bancos/global.php");
                     <input type="hidden" name="id" value="<?=$categoria['id'];?>">
                     <button class="btn btn-danger">Remover</button>
                 </form>
-            </td>-->
+            </td>
         </tr>
     <?php
     endforeach;
     ?>
 </table>
 <a href="categoria-formulario.php"><button class="btn btn-primary float-left">+</button></a>
-<?php include ("rodape.php"); ?>
+<?php include ("../src/includes/rodape.2.php"); ?>
 

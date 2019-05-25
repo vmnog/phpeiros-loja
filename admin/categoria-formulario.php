@@ -1,8 +1,6 @@
 <?php
-include ("cabecalho.php");
-include ("conecta.php");
-include ("banco-categoria.php");
-include ("banco-produto.php");
+include ("../src/includes/cabecalho.2.php");
+require_once("../src/bancos/global.php");
 ?>
 
 <h2>Formulário de categoria</h2>
@@ -23,5 +21,5 @@ include ("banco-produto.php");
         </table>
     </form>
 </div>
-<?php include ("rodape.php"); ?>
+<?php include ("../src/includes/rodape.2.php"); ?>
 
