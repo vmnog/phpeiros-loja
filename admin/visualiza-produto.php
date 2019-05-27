@@ -1,8 +1,8 @@
 <?php
-include ("../src/cabecalho.php");
+include ("../src/includes/cabecalho.2.php");
 include ("../src/bancos/conecta.php");
-include ("src/bancos/banco-produto.php");
-include ("src/bancos/banco-categoria.php");
+include ("../src/bancos/banco-produto.php");
+include ("../src/bancos/banco-categoria.php");
 
 
 $id = $_POST["id"];
@@ -17,7 +17,7 @@ $categoria_nome = $categoria['nome'];
 
 <div class="card">
     <div>
-        <img  class="imagem-produto" src="src/produtos/img/<?=$produto['imagem']?>" alt="Card image cap">
+        <img  class="imagem-produto" src="../src/produtos/img/<?=$produto['imagem']?>" alt="Card image cap">
     </div>	
     <div class="card-body">
             <h5 class="card-title"><?=$produto['nome'];?></h5>
@@ -33,5 +33,5 @@ $categoria_nome = $categoria['nome'];
     </div>
 </div>
 
-<?php include ("../src/rodape.php"); ?>
+<?php include ("../src/includes/rodape.2.php"); ?>
 
