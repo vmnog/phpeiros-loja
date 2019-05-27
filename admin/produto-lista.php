@@ -1,20 +1,24 @@
 <?php
+	session_start();
     include ("../src/includes/cabecalho.2.php");
 	require_once("../src/bancos/global.php");
 
-    $getRemovido = array_key_exists("removido", $_GET);
-    $removido = $getRemovido == "true";
-
-    if ($removido) :?>
-        <p class="alert-success" >Produto apagado com sucesso!</p >
-    <?php endif; ?>
+	if(isset($_SESSION['msg'])){
+		$removido = array_key_exists("removido", $_SESSION['msg']);
+		
+		if ($removido){
+			unset($_SESSION['msg']['removido']);
+			echo '<p class="alert-success" >Produto apagado com sucesso!</p>';
+		}
+	}
+?>
 
     <table class="table table-bordered table-striped ">
 <?php
     $produtos = listaProdutos($conexao);
 
 	if(count($produtos) === 0){
-		echo '<p style="color:red;">*Sem produtos para listar!</p>';
+		echo '<h2 style="color:red;">Sem produtos para listar.</h2>';
 	}
     foreach ($produtos as $produto):
 ?>
