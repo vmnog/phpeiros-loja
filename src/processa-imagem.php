@@ -19,15 +19,15 @@ function processaImagem($f):array
 	if($f['error'] !== 0) {
 		echo ('<br />Erro ao processar a imagem: Num erro: '.$f['error'].'<br />');
 	
-	}else if(array_search($f['type'],$MIME_Aceitos) === false){
+	}
+	else if(array_search($f['type'],$MIME_Aceitos) === false){
 		echo "Erro! Tipo de imagem inválida!<br />";
 	}
 	else if(is_uploaded_file($f['tmp_name']) === false){
-		echo "Erro ao processar a imagem. 0x000003<br />";
+		echo "Erro ao processar a imagem. Arquivo não identificado no servidor Cod: 0x000003<br />";
 	}
 	else if(move_uploaded_file($f['tmp_name'],'../'.$tmpSrc) === false){
-		echo "Erro ao mover o arquivo a pasta<br />";
-	
+		echo "Erro ao mover o arquivo paraa pasta<br />";
 	}
 	else{
 		$src = $tmpSrc;
