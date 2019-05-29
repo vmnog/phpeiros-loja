@@ -16,3 +16,7 @@ body{
 .upload-arquivo{
     cursor: pointer;
 }
+
+input[type="text"]:disabled {
+	cursor: no-drop;
+}

@@ -16,7 +16,7 @@ $nome = $categoria['nome'];
         <table class="table">
             <tr>
                 <td>ID</td>
-                <td><input  class="form-control" type="text" name="id"  value="<?=$categoria['id']?>"></td>
+                <td><input  class="form-control" type="text" name="id"  value="<?=$categoria['id']?>" disabled="disabled"></td>
             </tr>
             <tr>
                 <td>Nome</td>
