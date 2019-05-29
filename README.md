@@ -43,3 +43,9 @@ de que uma ferramenta seria interessante do grupo aprender!
 - Faremos uma documentação do projeto explicando cada função do repositório
 
 _ESTA NÃO É UMA INICIATIVA COM FINS LUCRATIVOS, APENAS EDUCATIVOS_ :smiley: :books: :pencil2:
+
+
+## Requisitos(do sistema):
+- PHP 7 ou superior.
+- Navegador WEB que tenha suporte HTM5
+- Um servidor SQL instalado.(mySQL)
