@@ -15,7 +15,17 @@ function insereProduto($conexao, $nome, $preco, $descricao, $categoria_id, $usad
 }
 
 function removeProduto($conexao, $id){
-    $query = "delete from produtos where id = {$id}";
+	$q = "SELECT imagem FROM `produtos` WHERE id = {$id}";
+	$q = mysqli_query($conexao,$q);
+	$q = mysqli_fetch_row($q);
+	
+	if($q[0] != 'default.jpg'){
+		$file = '../src/produtos/img/'.$q[0];
+
+		if(file_exists($file))unlink($file);
+	}
+
+	$query = "delete from produtos where id = {$id}";
     return mysqli_query($conexao, $query);
 }
 
