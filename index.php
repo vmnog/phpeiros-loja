@@ -4,7 +4,9 @@
 	define('DB_VERSAO',1); // 0 , 9999
 	$drop = false;
 	if(!file_exists('dev.ignore')){
-		fclose(fopen('dev.ignore','w'));
+		$f = fopen('dev.ignore','w');
+		fwrite($f,DB_VERSAO);
+		fclose($f);
 		
 		$drop = true;
 	}
