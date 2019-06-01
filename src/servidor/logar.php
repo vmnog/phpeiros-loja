@@ -47,9 +47,8 @@
 	
 	$_SESSION['Logado'] = true;
 	$_SESSION['nome'] = $q['nome'];
-	$_SESSION['id'] = "";
+	$_SESSION['id'] = $q['id'];
 	$_SESSION['imagem'] = $q['imagem'];
 	$_SESSION['cargo'] = $q['cargo'];
-	
 	header('Location: ../../');
 ?>
