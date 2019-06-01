@@ -51,6 +51,8 @@ if(empty($result) & mysqli_select_db($conexao,$dbName)) {
 						email varchar(80),
 						senha varchar(255),
 						imagem varchar(50),
+						sobrenome varchar(50),
+						genero int,
 						cargo int default 1
                           )";
                 $result = mysqli_query($conexao, $query);
