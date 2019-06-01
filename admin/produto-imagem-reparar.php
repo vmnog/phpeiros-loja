@@ -38,7 +38,8 @@
 	}
 
 	if(isset($_POST['t']))
-		echo '<a href="reparar-imagem.php">Continuar Alterando '.$_POST['t'].' imagens</a>';
+		if($_POST['t'] > 0)
+			echo '<a href="reparar-imagem.php">Continuar Alterando '.$_POST['t'].' imagens</a>';
 
 	include ("../src/includes/rodape.2.php");
 ?>
