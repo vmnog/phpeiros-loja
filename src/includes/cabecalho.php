@@ -50,7 +50,7 @@
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="usuario/sair.php">Meu carrinho</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="usuario/sair.php">Sair</a>
+                <a class="dropdown-item" href="src/servidor/sair.php">Sair</a>
             </div>
 		</div>	
 		<?php else: ?>
