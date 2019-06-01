@@ -1,3 +1,6 @@
+<?php session_start(); 
+	include('src/servidor/logado.php');
+?>
 <html>
 <head>
     <title>Minha Loja</title>
@@ -22,6 +25,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="admin/produto-lista.php">Listar</a>
             </div>
+			
         </div>
 
         <!-- Example single danger button -->
@@ -35,9 +39,32 @@
                 <a class="dropdown-item" href="admin/categoria-lista.php">Listar</a>
             </div>
         </div>
-
-
-
+		<div class="btn-group">
+		<?php  if(UsuarioLogado() === true): ?>
+		
+			<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="src/user/img/<?=$_SESSION['imagem']?>" title="<?=$_SESSION['nome']?>" width="20px" />
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="usuario/minhaconta">Minha conta</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="usuario/sair.php">Meu carrinho</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="usuario/sair.php">Sair</a>
+            </div>
+		</div>	
+		<?php else: ?>
+		<div class="btn-group">
+			<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Conta
+			</button>
+			<div class="dropdown-menu">
+			<a class="dropdown-item" href="login/">Entrar</a>
+			</div>
+		</div>
+		<?php endif; ?>
+		
+	
     </div>
 </nav>
 
