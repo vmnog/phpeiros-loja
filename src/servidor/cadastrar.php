@@ -49,7 +49,7 @@
 	
 	$senha = cifrarSenha($_POST['password']);
 	
-	$sql = "INSERT INTO `usuario`(nome,email,senha,sobrenome,imagem,id,genero) VALUES('$nome','$email','$senha','$sNome','padrao.jpg',null,$genero)";
+	$sql = "INSERT INTO `usuario`(nome,email,senha,sobrenome,imagem,id,genero) VALUES('$nome','$email','$senha','$sNome','padrao.png',null,$genero)";
 
 	$q = mysqli_query($conexao,$sql);
 

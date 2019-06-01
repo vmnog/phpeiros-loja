@@ -2,3 +2,5 @@
 *.png
 *.jpg
 dev.ignore
+!padrao.png
+!default.jpg
