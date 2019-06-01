@@ -60,6 +60,8 @@
 			</button>
 			<div class="dropdown-menu">
 			<a class="dropdown-item" href="login/">Entrar</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="cadastro/">Cadastrar</a>			
 			</div>
 		</div>
 		<?php endif; ?>
