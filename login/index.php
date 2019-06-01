@@ -9,8 +9,9 @@
 	
 	if(isset($_SESSION['MSG'])){
 		foreach($_SESSION['MSG'] as $c){
-			echo "<b>$c</b><br />";
+			echo "<b>$c</b><br />";	
 		}
+		unset($_SESSION['MSG']);
 	}
 	
 	include ("../src/includes/cabecalho.2.php");
@@ -19,13 +20,13 @@
 <br /><hr />
 <form action="../src/servidor/logar.php" method="POST">
 
-	<label>E-mail</label>
-	<input type="email" name="email" required placeholder="Seu e-mail" />
+	<label for="email" >E-mail</label>
+	<input type="email" name="email" id="email" required placeholder="Seu e-mail" autofocus />
 	
 	<br />
 	
-	<label>Senha:</label>
-	<input type="password" name="password" required placeholder="Senha"/>
+	<label for="pw" >Senha:</label>
+	<input type="password" name="password" id="pw" required placeholder="Senha"/>
 	
 	<br />
 	
