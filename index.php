@@ -1,7 +1,7 @@
 <?php include("src/includes/cabecalho.php"); ?>
 
 <?php
-	define('DB_VERSAO',1); // 0 , 9999
+	define('DB_VERSAO',2); // 0 , 9999
 	$drop = false;
 	if(!file_exists('dev.ignore')){
 		$f = fopen('dev.ignore','w');
