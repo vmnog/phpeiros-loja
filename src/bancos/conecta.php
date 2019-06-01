@@ -40,6 +40,23 @@ if(empty($result) & mysqli_select_db($conexao,$dbName)) {
 				 echo " PRODUTOS\n";
 }
 
+// se a tabela não existir, cria uma.
+$query = "SELECT ID FROM Usuario";
+$result = mysqli_query($conexao, $query);
+
+if(empty($result) & mysqli_select_db($conexao,$dbName)) {
+                $query = "CREATE TABLE Usuario (
+						id int AUTO_INCREMENT PRIMARY KEY,
+						nome varchar(50),
+						email varchar(80),
+						senha varchar(255),
+						imagem varchar(50),
+						cargo int default 1
+                          )";
+                $result = mysqli_query($conexao, $query);
+				 #echo " Cadastro\n";
+}
+
 $query = "SELECT ID FROM categorias";
 $result = mysqli_query($conexao, $query);
 
