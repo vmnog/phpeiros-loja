@@ -46,9 +46,9 @@
                 <img src="src/user/img/<?=$_SESSION['imagem']?>" title="<?=$_SESSION['nome']?>" width="20px" />
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="usuario/minhaconta">Minha conta</a>
+                <a class="dropdown-item" href="minhaconta/">Minha conta</a>
 				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="usuario/sair.php">Meu carrinho</a>
+				<a class="dropdown-item" href="carrinho/">Meu carrinho</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="src/servidor/sair.php">Sair</a>
             </div>
