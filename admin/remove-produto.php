@@ -1,7 +1,7 @@
 <?php
 	session_start();
     
-	include ("../src/includes/cabecalho.php");
+	include ("../src/includes/cabecalho.2.php");
 	require_once("../src/bancos/global.php");
 
     if(!isset($_POST['id']) or empty($_POST['id']) or !is_numeric($_POST['id'])){
