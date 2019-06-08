@@ -19,13 +19,11 @@
 		echo '<p><b>Atenção!</b> A imagem que você enviou não foi processada corramente.<br />
 		Uma imagem temporária está visivel atualmente, clique no link para corrir a imagem
 		<a href="reparar-imagem.php" target="_blank" title="Clique para corrigir a imagem">Corrigir Imagem</a></p>';
-	
-    $conexao = mysqli_connect('localhost', 'root', '', 'loja');
 
-    if (insereProduto($conexao, $nome, $preco, $descricao, $categoria_id, $usado,$img['name'])){ ?>
+    if (insereProduto($pdo, $nome, $preco, $descricao, $categoria_id, $usado,$img['name'])){ ?>
         <p class="text-success">O produto <?= $nome; ?> foi adicionado com o preço de R$<?= $preco; ?> !</p>
     <?php   }else {
-        $msg = mysqli_error($conexao);
+        $msg = mysqli_error($pdo);
         ?>
         <p class="text-danger"> O produto <?= $nome; ?> não foi adicionado: <?= $msg ?> </p>
     <?php

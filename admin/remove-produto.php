@@ -9,7 +9,7 @@
 		exit;
 	}
 	
-    removeProduto($conexao, $_POST['id']);
+    removeProduto($pdo, $_POST['id']);
 	
     header("Location: produto-lista.php");
 	$_SESSION['msg']['removido'] = true;

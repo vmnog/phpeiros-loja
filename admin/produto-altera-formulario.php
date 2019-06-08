@@ -3,8 +3,8 @@ include("../src/includes/cabecalho.2.php");
 require_once("../src/bancos/global.php");
 
 $id = $_GET['id'];
-$produto = buscaProduto($conexao, $id);
-$categorias = listaCategorias($conexao);
+$produto = buscaProduto($pdo, $id);
+$categorias = listaCategorias($pdo);
 $usado = $produto['usado'] ? "checked = 'checked'" : "";
 
 ?>

@@ -21,7 +21,7 @@
 		}
 		else{
 			$sql = "UPDATE `produtos` SET imagem = '{$img['name']}' WHERE id = {$_POST['imagemID']}";
-			if(mysqli_query($conexao,$sql) === true){
+			if(mysqli_query($pdo,$sql) === true){
 			
 				echo ' <img src="../'.$img["src"].'" width="350px" height="350px" /><br />
 				<p style="color:green">
@@ -30,7 +30,7 @@
 				</p>';
 			 }else{
 				echo '<p style="color:red;">
-					<b>Erro</b>: <?=mysqli_error($conexao);?>
+					<b>Erro</b>: <?=mysqli_error($pdo);?>
 					<br /><a href="reparar-imagem.php">Tente novamente</a>
 					</p>';
 			 }	

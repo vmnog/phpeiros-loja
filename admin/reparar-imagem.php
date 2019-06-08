@@ -22,15 +22,18 @@
 			<th>Opção</th>
 			<?php
 
-				$sql = "SELECT imagem,nome,id FROM `produtos` WHERE imagem = 'default.png'";
-				$result = mysqli_query($conexao,$sql);
+				$r = $pdo->prepare("SELECT imagem,nome,id FROM `produtos` WHERE imagem = 'default.png'");
+				
+				$r->execute();
+				
+				$result = $r->fetchAll();
 				
 				if(empty($result)){
 					echo '<p style="color:#00AAEE;">*Não há produtos sem imagens.</p>';
 				}
 				else
 				{
-					$t = $result->num_rows-1;
+					$t = $result->rowCount()-1;
 					foreach($result as $c):
 				?>
 					<tr>

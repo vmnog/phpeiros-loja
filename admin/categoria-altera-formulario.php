@@ -3,7 +3,7 @@ include ("../src/includes/cabecalho.2.php");
 require_once("../src/bancos/global.php");
 
 $id = $_GET['id'];
-$categoria = buscaCategoria($conexao, $id);
+$categoria = buscaCategoria($pdo, $id);
 $nome = $categoria['nome'];
 
 

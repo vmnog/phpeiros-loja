@@ -2,7 +2,7 @@
 include("../src/includes/cabecalho.2.php");
 require_once("../src/bancos/global.php");
 
-$categorias = listaCategorias($conexao);
+$categorias = listaCategorias($pdo);
 
 
 ?>

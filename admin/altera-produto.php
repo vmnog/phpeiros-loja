@@ -8,17 +8,15 @@ $descricao = $_POST["descricao"];
 $categoria_id = $_POST["categoria_id"];
 $id = $_POST["id"];
 
-$produto = buscaProduto($conexao, $id);
+$produto = buscaProduto($pdo, $id);
 
 $usado = isset($_POST['usado']) ? 1 : 0;
 
 
-$conexao = mysqli_connect('localhost', 'root', '', 'loja');
-
-if (alteraProduto($conexao, $id, $nome, $preco, $descricao, $categoria_id, $usado)){ ?>
+if (alteraProduto($pdo, $id, $nome, $preco, $descricao, $categoria_id, $usado)){ ?>
     <p class="text-success">O produto <?= $nome; ?> foi alterado!</p>
 <?php   }else {
-    $msg = mysqli_error($conexao);
+    $msg = mysqli_error($pdo);
     ?>
     <p class="text-danger"> O produto <?= $nome; ?> não foi alterado: <?= $msg ?> </p>
     <?php

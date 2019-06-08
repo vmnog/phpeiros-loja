@@ -5,12 +5,10 @@ require_once("../src/bancos/global.php");
 $id = $_POST["id"];
 $nome = $_POST["nome"];
 
-$conexao = mysqli_connect('localhost', 'root', '', 'loja');
-
-if (alteraCategoria($conexao, $id, $nome)){ ?>
+if (alteraCategoria($pdo, $id, $nome)){ ?>
     <p class="text-success">A categoria <?= $nome; ?> foi alterada!</p>
 <?php   }else {
-    $msg = mysqli_error($conexao);
+    $msg = mysqli_error($pdo);
     ?>
     <p class="text-danger">A categoria <?= $nome; ?> não alterada!<?= $msg ?> </p>
     <?php

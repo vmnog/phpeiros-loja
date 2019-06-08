@@ -1,3 +1,4 @@
+
 <?php
 	session_start();
     include ("../src/includes/cabecalho.2.php");
@@ -15,7 +16,7 @@
 
     <table class="table table-bordered table-striped ">
 <?php
-    $produtos = listaProdutos($conexao);
+    $produtos = listaProdutos($pdo);
 
 	if(count($produtos) === 0){
 		echo '<h2 style="color:red;">Sem produtos para listar.</h2>';

@@ -4,12 +4,10 @@
 
     $nome = $_POST["nome"];
 
-    $conexao = mysqli_connect('localhost', 'root', '', 'loja');
-
-    if (insereCategoria($conexao, $nome)){ ?>
+    if (insereCategoria($pdo, $nome)){ ?>
         <p class="text-success">A categoria <?= $nome; ?> foi adicionada!</p>
     <?php   }else {
-        $msg = mysqli_error($conexao);
+        $msg = mysqli_error($pdo);
         ?>
         <p class="text-danger">A categoria <?= $nome; ?> não foi adicionada: <?= $msg ?> </p>
     <?php
