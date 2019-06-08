@@ -27,7 +27,7 @@
     <h1 style="margin-bottom: 5%;">Bem vindo a minha loja!</h1>    
 </div>
 
-<h3 style="color: tomato; margin-bottom: 5%;"><?php include("src/bancos/conecta.php"); ?></h3>
+<h3 style="color: tomato; margin-bottom: 5%;"><?php include("src/bancos/pdo-conecta.php"); ?></h3>
 
 <div>
     <h2 style="margin-bottom: 25px;">Dicas pros Devs</h2>
@@ -40,7 +40,7 @@
 	<?php
 	//Para quando for alterado algo no banco de dados.
 		if($drop){
-			$pdo->execute('DROP DATABASE loja');
+			$pdo->exec('DROP DATABASE '.dbname);
 			echo 'Atenção: <b>DROP DATABASE loja<b>: Automatico! <br /><a href="index.php">Atualize a página para continuar</a>';
 		}
 	?>

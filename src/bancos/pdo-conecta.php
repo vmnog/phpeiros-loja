@@ -19,7 +19,8 @@ try
 
 	if($pdo->exec($sql) == 1)
 	{
-
+		$pdo->exec('use '.dbname);
+		
 		$sql = "CREATE TABLE IF NOT EXISTS Produtos (
 				id int AUTO_INCREMENT PRIMARY KEY,
 				nome varchar(255),
