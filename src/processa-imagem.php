@@ -1,5 +1,5 @@
 <?php
-define('PASTA_IMAGENS','src/produtos/img/',true);
+define('PASTA_IMAGENS','src/produtos/img/');
 
 function processaImagem($f):array
 {
@@ -23,6 +23,9 @@ function processaImagem($f):array
 	else if(array_search($f['type'],$MIME_Aceitos) === false){
 		echo "Erro! Tipo de imagem inválida!<br />";
 	}
+	else if(verificaImagem($f['tmp_name']) === false){
+		echo "Erro! Imagem Inválida<br />";
+	}
 	else if(is_uploaded_file($f['tmp_name']) === false){
 		echo "Erro ao processar a imagem. Arquivo não identificado no servidor Cod: 0x000003<br />";
 	}
@@ -42,6 +45,37 @@ function processaImagem($f):array
 	);
 }
 
+function verificaImagem($file):bool
+{
+	try{
+		if(!file_exists($file))return false;
+		
+		$mime = exif_imagetype($file);
+		
+		$img = false;
+		
+		switch($mime)
+		{
+			case IMAGETYPE_JPEG:
+				$img = @imagecreatefromjpeg($file);
+			break;
+			case  IMAGETYPE_PNG:
+				$img = @imagecreatefrompng($file);
+			break;
+			case IMAGETYPE_GIF:
+				$img = @imagecreatefromgif($file);
+			break;
+			default:
+				return false;
+		}
+		
+		if($img)return true;
+	}
+	catch(Exception $e){
+		echo "<fieldset><legend>Aviso</legend> ".$e->getMessage().'</fieldset>';
+	}	
+	return false;
+}
 
 
 ?>
