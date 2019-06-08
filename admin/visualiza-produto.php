@@ -1,15 +1,13 @@
 <?php
 include ("../src/includes/cabecalho.2.php");
-include ("../src/bancos/conecta.php");
-include ("../src/bancos/banco-produto.php");
-include ("../src/bancos/banco-categoria.php");
+include ("../src/bancos/global.php");
 
 
 $id = $_POST["id"];
-$produto = buscaProduto($conexao, $id);
+$produto = buscaProduto($pdo, $id);
 $categoria_id = $produto['categoria_id'];
 
-$categoria = buscaCategoria($conexao, $categoria_id);
+$categoria = buscaCategoria($pdo, $categoria_id);
 $categoria_nome = $categoria['nome'];
 
 

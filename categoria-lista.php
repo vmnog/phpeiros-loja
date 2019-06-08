@@ -6,7 +6,7 @@ require_once("src/bancos/global.php");
 
 <table class="table table-bordered table-striped">
     <?php
-    $categorias = listaCategorias($conexao);
+    $categorias = listaCategorias($pdo);
     foreach ($categorias as $categoria):
         ?>
         <tr>

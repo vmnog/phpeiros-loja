@@ -1,7 +1,7 @@
 <?php include("src/includes/cabecalho.php"); ?>
 
 <?php
-	define('DB_VERSAO',2); // 0 , 9999
+	define('DB_VERSAO',3); // 0 , 9999
 	$drop = false;
 	if(!file_exists('dev.ignore')){
 		$f = fopen('dev.ignore','w');
@@ -40,7 +40,7 @@
 	<?php
 	//Para quando for alterado algo no banco de dados.
 		if($drop){
-			mysqli_query($conexao,'DROP DATABASE loja');
+			$pdo->execute('DROP DATABASE loja');
 			echo 'Atenção: <b>DROP DATABASE loja<b>: Automatico! <br /><a href="index.php">Atualize a página para continuar</a>';
 		}
 	?>

@@ -1,7 +1,7 @@
 <?php
 	require_once('../src/includes/cabecalho.2.php');
 	
-	require_once('../src/bancos/conecta.php');
+	require_once('../src/bancos/pdo-conecta.php');
 	
 	require_once('../src/servidor/logado.php');
 
@@ -10,11 +10,11 @@
 	}
 	session_start();
 
-	$sql = "SELECT * FROM `usuario` WHERE id = '{$_SESSION['id']}'";
+	$r  = $pdo->prepare("SELECT * FROM `usuario` WHERE id = '{$_SESSION['id']}'");
 	
-	$q = mysqli_query($conexao,$sql);
+	$r->execute();
 	
-	$q = mysqli_fetch_assoc($q);
+	$q = $r->fetch();
 	
 	if($q){
 		if(count($q) === 0){
