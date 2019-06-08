@@ -9,8 +9,6 @@
 		exit;
 	}
 	
-	
-	
 	if(!isset($_FILES['imagem'])){
 		echo '<b>Erro Interno</b>: O arquivo enviado não foi identificado pelo servidor.<br />
 		<a href="reparar-imagem.php">Tente novamente</a>';
@@ -20,8 +18,11 @@
 			echo '<a href="reparar-imagem.php">Tente novamente</a>';		
 		}
 		else{
-			$sql = "UPDATE `produtos` SET imagem = '{$img['name']}' WHERE id = {$_POST['imagemID']}";
-			if(mysqli_query($pdo,$sql) === true){
+			$r = $pdo->prepare("UPDATE `produtos` SET imagem = :img WHERE id = :id");
+			$r->bindParam(":img",$img['name']);
+			$r->bindParam(":id",$_POST['imagemID']);
+			
+			if($r->execute() === true){
 			
 				echo ' <img src="../'.$img["src"].'" width="350px" height="350px" /><br />
 				<p style="color:green">

@@ -33,7 +33,7 @@
 				}
 				else
 				{
-					$t = $result->rowCount()-1;
+					$t = count($result)-1;
 					foreach($result as $c):
 				?>
 					<tr>
