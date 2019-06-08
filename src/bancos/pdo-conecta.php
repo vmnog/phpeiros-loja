@@ -43,8 +43,8 @@ try
 			id int AUTO_INCREMENT PRIMARY KEY,
 			nome varchar(50),
 			email varchar(80),
-			senha varchar(255),
-			imagem varchar(50),
+			senha varchar(550),
+			imagem varchar(50) default 'padrao.png',
 			sobrenome varchar(50),
 			genero int,
 			cargo int default 1
@@ -53,10 +53,10 @@ try
 		$pdo->exec($sql);
 		
 		echo "LOJA, PRODUTOS e CATEGORIAS criados com sucesso!";
-	}else{
-		$pdo->exec('use '.dbname);
 	}
-	
+	else
+		$pdo->exec('use '.dbname);
+
 }catch(PDOException $e){
 	echo "<b>Aviso!</b> Erro na conexão com banco de dados <b>MSG:</b> ".$e->getMessage();
 }
