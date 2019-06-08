@@ -33,6 +33,19 @@ function insereProduto($pdo, $nome, $preco, $descricao, $categoria_id, $usado,$i
 }
 
 function removeProduto($pdo, $id){
+	$r = $pdo->prepare("SELECT imagem FROM `produtos` WHERE id = :id");
+	
+	$r->bindParam(":id",$id);
+
+	$r->execute();
+
+	$q = $r->fetch();
+	
+	if($q[0] != 'default.jpg'){
+		$file = '../src/produtos/img/'.$q[0];
+
+		if(file_exists($file))unlink($file);	
+	}
 	try{
 		$e = $pdo->prepare("DELETE FROM `produtos` WHERE id = :id");
 		$e = $e->execute(array( ":id" => $id ));
@@ -69,8 +82,7 @@ function alteraProduto($pdo, $id, $nome, $preco, $descricao, $categoria_id, $usa
 		$e->bindParam(":id",$id);
 		
 		
-		
-		return $e->execute();;
+		return $e->execute();
 	}catch(PDOException $e){
 		return "Erro: ".$e->getMessage();
 	}
