@@ -1,7 +1,7 @@
 <?php
-
-	require_once("conecta.php");
-	require_once("banco-produto.php");
-	require_once("banco-categoria.php");
+	
+	require_once ("pdo-conecta.php");
+	require_once ("pdo-produto.php");
+	require_once ("pdo-categoria.php");
 
 ?>

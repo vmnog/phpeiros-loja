@@ -1,8 +1,8 @@
 <?php
 
-function listaCategorias($conexao){
+function listaCategorias($pdo){
 	try{
-		$q = $conexao->prepare("SELECT * FROM `categorias`");
+		$q = $pdo->prepare("SELECT * FROM `categorias`");
 
 		$q->execute();
 		
@@ -13,33 +13,34 @@ function listaCategorias($conexao){
 	}
 }
 
-function buscaCategoria($conexao, $id){
-    $q = $conexao->prepare("SELECT * FROM `categorias` WHERE id = :id");
+function buscaCategoria($pdo, $id){
+    $q = $pdo->prepare("SELECT * FROM `categorias` WHERE id = :id");
+	$q->bindParam(':id',$id);
 	
-	$q->execute( array(':id' => $id) );
+	$q->execute();
 	
-    return $q->fetchAll();
+    return $q->fetch();
 }
 
-function removeCategoria($conexao, $id){
-	$q = $conexao->prepare("DELETE FROM `categorias` WHERE id = :id");
+function removeCategoria($pdo, $id){
+	$q = $pdo->prepare("DELETE FROM `categorias` WHERE id = :id");
 	
-	return $q->execute( array(':id' => $id) );;
+	return $q->execute( array(':id' => $id) );
 }
 
-function alteraCategoria($conexao, $id, $nome){
-    $q = $conexao->prepare("UPDATE `categorias` SET nome = :nome WHERE id = :id");
+function alteraCategoria($pdo, $id, $nome){
+    $q = $pdo->prepare("UPDATE `categorias` SET nome = :nome WHERE id = :id");
 	
 	$r = $q->execute( array(
 		":nome" => $nome,
 		":id" => $id
-	);
+	));
 	
     return $r;
 }
 
-function insereCategoria($conexao, $nome){
-    $q = $conexao->prepare("INSERT INTO `categorias`(nome) VALUES (:nome)");
+function insereCategoria($pdo, $nome){
+    $q = $pdo->prepare("INSERT INTO `categorias`(nome) VALUES (:nome)");
 	
     return $q->execute( array(":nome" => $nome) );
 }
