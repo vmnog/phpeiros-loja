@@ -4,8 +4,8 @@
 */
 
 	session_start();
-	include("../bancos/conecta.php");
-	#include("../bancos/pdo.conecta.php");
+	#include("../bancos/conecta.php");
+	include("../bancos/pdo-conecta.php");
 	include("funcoes-sessao.php");
 
 	if($_SERVER['REQUEST_METHOD'] !== 'POST'){
@@ -30,8 +30,10 @@
 	$nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
 	$sNome = filter_input(INPUT_POST, 'sobreNome', FILTER_SANITIZE_STRING);
 	
-	
-	$genero = $_POST['genero'] == 'm'?  1 : $_POST['genero'] == "f" ? 2 : 0; //masculino = 1 | feminino = 2 | outro = 0
+	$genero = 0;
+	if(is_numeric($_POST['genero']))
+		if($_POST['genero'] >= 0 && $_POST['genero'] <= 2)
+			$genero = $_POST['genero']; //masculino = 1 | feminino = 2 | Não informado = 0	
 
 	if(!$email){
 		$_SESSION['MSG'][] = "Erro! E-mail invalido. Por favor, verifique a sintaxe do e-mail";
@@ -39,20 +41,36 @@
 		exit;
 	}
 	
-	$q = mysqli_query($conexao,"SELECT * FROM `usuario` WHERE email = '$email'");
 	
-	if(mysqli_num_rows($q) > 0 ){
-		$_SESSION['MSG'][] = 'Erro na criação da conta! Talvez está conta já exista! Tente <a href="../Login/">Entrar</a>';
+	//Verifica se a conta já existe
+	$r = $pdo->prepare("SELECT * FROM `usuario` WHERE email = ':email'");
+	
+	$r->execute(array(":email", $email));
+	
+	$val = $r->fetchAll();
+	if(count($val) > 0 ){
+		$_SESSION['MSG'][] = 'Já existe um e-mail cadastrado nesta conta!<br /> Tente <a href="../Login/">Entrar</a>';
 		header("Location: ../../Cadastro/");
 		exit;
-	}	
+	}
 	
 	$senha = cifrarSenha($_POST['password']);
 	
-	$sql = "INSERT INTO `usuario`(nome,email,senha,sobrenome,imagem,id,genero) VALUES('$nome','$email','$senha','$sNome','padrao.png',null,$genero)";
+	try{
+		$r = $pdo->prepare("INSERT INTO `usuario`(nome,email,senha,sobrenome,genero) 
+		VALUES(:nome,:email,:senha,:sNome,:genero)");
+		$r->bindParam(":nome",$nome);
+		$r->bindParam(":email",$email);
+		$r->bindParam(":senha",$senha);
+		$r->bindParam(":sNome",$sNome);
+		$r->bindParam(":genero",$genero);
 
-	$q = mysqli_query($conexao,$sql);
-
+		$q = $r->execute();
+	}
+	catch(PDOException $e){
+		echo "<b>Erro fatal</b>:  Sua conta não pode ser criada por um erro interno em nosso sistema.<br />Por favor, contate os administradores<hr />Erro interno[BD]: ".$e->getMessage();
+		exit;
+	}
 
 	header("Location: ../../login");
 ?>

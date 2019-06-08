@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	include("../bancos/conecta.php");
-	#include("../bancos/pdo.conecta.php");
+	#include("../bancos/conecta.php");
+	include("../bancos/pdo-conecta.php");
 	include("funcoes-sessao.php");
 
 	if($_SERVER['REQUEST_METHOD'] !== 'POST'){
@@ -16,6 +16,7 @@
 	}
 
 	$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+	$pw = $_POST['password'];
 	
 	if(!$email){
 		$_SESSION['MSG'][] = "Erro! E-mail invalido. Por favor, verifique a sintaxe do e-mail";
@@ -23,24 +24,29 @@
 		exit;
 	}
 	
-	$Senha = cifrarSenha($_POST['password']);
+	if($pw < 4){
+		$_SESSION['MSG'][] = "Erro! Sua senha possui menos de 4 caracteres.";
+		header('Location: ../../Login/');
+		exit;		
+	}
+	
+	$Senha = cifrarSenha($pw);
 
-
-	$sql = "SELECT * from `Usuario` WHERE email = '{$_POST['email']}'";
+	$r = $pdo->prepare("SELECT * from `Usuario` WHERE email = :email");
+	$r->bindParam(':email',$email);
 	
-	$q = mysqli_query($conexao,$sql);
+	$r->execute();
 	
+	$q = $r->fetch();
 	
-	if(empty($q) || mysqli_num_rows($q) <= 0){
-		$_SESSION['MSG'][] = "Usuário inexistente ou senha inválido(s)!";
+	if(empty($q)){
+		$_SESSION['MSG'][] = "Usuário inexistente ou senha inválida!";
 		header('Location: ../../Login/');
 		exit;
 	}
-	
-	$q = mysqli_fetch_assoc($q);
-	
+
 	if($q['senha'] !== $Senha){
-		$_SESSION['MSG'][] = "Usuário ou senha inválido(s)!";
+		$_SESSION['MSG'][] = "Usuário ou senha inválida!";
 		header('Location: ../../Login/');
 		exit;
 	}
@@ -49,6 +55,6 @@
 	$_SESSION['nome'] = $q['nome'];
 	$_SESSION['id'] = $q['id'];
 	$_SESSION['imagem'] = $q['imagem'];
-	$_SESSION['cargo'] = $q['cargo'];
+	$_SESSION['cargo'] = $q['cargo'] ?? 0;
 	header('Location: ../../');
 ?>
