@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require_once('../src/servidor/logado.php');
+	require_once('../src/servidor/usuario.php');
 	
 	if(UsuarioLogado()){
 		header('Location: ../');
@@ -36,6 +36,10 @@
 				<td>
 					<input type="password" class="form-control" name="password" id="pw" required placeholder="Senha"/>
 				</td>
+			</tr>
+			<tr>
+				<td>Permanecer Logado.</td>
+				<td><input type="checkbox" name="ficarLogado" /> </td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" class="form-control" value="Entrar"/></td>

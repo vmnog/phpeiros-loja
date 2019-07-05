@@ -56,5 +56,13 @@
 	$_SESSION['id'] = $q['id'];
 	$_SESSION['imagem'] = $q['imagem'];
 	$_SESSION['cargo'] = $q['cargo'] ?? 0;
+	$_SESSION['PLogado'] = false;
+	$_SESSION['sessao_limite']  = time() + 3600; // 1h
+	
+	
+	if(isset($_POST['ficarLogado'])){
+		$_SESSION['PLogado'] = true;
+	}
+	
 	header('Location: ../../');
 ?>
