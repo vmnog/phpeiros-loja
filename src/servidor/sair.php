@@ -1,8 +1,7 @@
+<?php require_once('usuario.php'); ?>
 <?php
-session_start();
-unset($_SESSION['Logado']);
-session_destroy();
-
-header('Location: ../../Login/');
-
+	if(usuario_deslogar())
+		header('Location: ../../Login/');
+	else
+		echo "<b>Erro ao deslogar!</b> <br />Tente recarregar a página!";
 ?>

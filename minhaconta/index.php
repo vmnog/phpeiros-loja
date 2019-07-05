@@ -3,13 +3,12 @@
 	
 	require_once('../src/bancos/pdo-conecta.php');
 	
-	require_once('../src/servidor/logado.php');
+	require_once('../src/servidor/usuario.php');
 
-	if(UsuarioLogado()){
+	if(!UsuarioLogado()){
 		header("Location: ../");
 	}
-	session_start();
-
+	
 	$r  = $pdo->prepare("SELECT * FROM `usuario` WHERE id = '{$_SESSION['id']}'");
 	
 	$r->execute();

@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require_once('../src/servidor/logado.php');
+	require_once('../src/servidor/usuario.php');
 	
 	if(UsuarioLogado()){
 		header('Location: ../');
