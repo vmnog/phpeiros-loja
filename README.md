@@ -47,5 +47,5 @@ _ESTA NÃO É UMA INICIATIVA COM FINS LUCRATIVOS, APENAS EDUCATIVOS_ :smiley: :b
 
 ## Requisitos(do sistema):
 - PHP 7 ou superior.
-- Navegador WEB que tenha suporte HTM5
+- Navegador WEB que tenha suporte HTML5
 - Um servidor SQL instalado.(mySQL)
