@@ -1,4 +1,4 @@
-# phpeiros-loja
+# PHPeiros Loja
 
 :alien: [**Entre no nosso discord **](https://discord.gg/94K9XSA)<br>
 
